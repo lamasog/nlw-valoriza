@@ -19,7 +19,7 @@ class User {
     admin: boolean;
 
     @CreateDateColumn()
-    created_ad: Date;
+    created_at: Date;
 
     @UpdateDateColumn()
     updated_at: Date;
