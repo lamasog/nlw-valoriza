@@ -3,13 +3,14 @@ import { UsersRepositories } from "../repositories/UsersRepositories";
 
 interface IUserRequest {
     name: string;
+    password: string;
     email: string;
     // ? indica que o atributo é opcional
     admin?: boolean;
 }
 
 class CreateUserService {
-    async execute({name, email, admin} : IUserRequest) {
+    async execute({name, password, email, admin} : IUserRequest) {
         const usersRepository = getCustomRepository(UsersRepositories);
 
         if(!email) {
@@ -25,7 +26,8 @@ class CreateUserService {
         }
 
         const user = usersRepository.create({
-            name, 
+            name,
+            password,
             email,
             admin
         })
