@@ -22,6 +22,7 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
         // Validar se token não está expirado | usuário autenticado
         const { sub } = verify(token, "7528a6b0833feb683a29d0a845f8225f") as IPayload;
         
+        // Recuperar informações do usuário
         request.user_id = sub;
 
         return next();
@@ -29,6 +30,5 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
         return response.status(401).end();
     }
     
-    // Recuperar informações do usuário
     
 }
